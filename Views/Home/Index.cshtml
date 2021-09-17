@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div>
+    <h2>Slow Service</h2>
+    <span id="slow-service-response"></span>
+</div>
+
+<script>
+
+    fetch("/Home/SlowService")
+    .then(r => r.text())
+    .then(text => {
+        document.getElementById("slow-service-response").innerText = text;
+    })
+    .catch(e => {
+          document.getElementById("slow-service-response").innerText = e.message;
+    })
+</script>
